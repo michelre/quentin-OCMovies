@@ -113,7 +113,7 @@ header img {
     color: #000000;
 }
 
-#top-rated-movies .movies-container {
+.movies-container {
     opacity: 1;
     display: grid;
     grid-template-columns: repeat(1, 1fr);
@@ -123,18 +123,18 @@ header img {
     align-items: center;
 }
 
-#top-rated-movies .movies-container .movie-card {
+.movies-container .movie-card {
     position: relative;  
     width: 100%;
     height: 320px;
     overflow: hidden;
 }
 
-#top-rated-movies .movies-container .movie-card-details h3{
+.movies-container .movie-card-details h3{
     margin: 0;
 }
 
-#top-rated-movies .movies-container .movie-card-details {
+.movies-container .movie-card-details {
     position: absolute;  
     top: 34px;
     left: 0;
@@ -147,7 +147,7 @@ header img {
     box-sizing: border-box; 
 }    
 
-#top-rated-movies .movies-container .movie-card-details button {
+.movies-container .movie-card-details button {
         display: block;
     margin-right: 0;
     margin-left: auto;
@@ -163,7 +163,7 @@ header img {
 
 }
 
-#top-rated-movies .movies-container img {    
+.movies-container img {    
     opacity: 1;
     position: relative;
     width: 100%;
@@ -190,11 +190,11 @@ header img {
         font-size: 40px;
     }      
 
-    #top-rated-movies .movies-container {
+    .movies-container {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    #top-rated-movies .movies-container .movie-card {
+    .movies-container .movie-card {
         height: 285px;
     }
 }
@@ -209,11 +209,11 @@ header img {
     }  
 
 
-    #top-rated-movies .movies-container {
+    .movies-container {
         grid-template-columns: repeat(3, 1fr);
     }
 
-    #top-rated-movies .movies-container .movie-card {
+    .movies-container .movie-card {
         height: 252px;
     }
 }
