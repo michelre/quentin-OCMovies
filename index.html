@@ -126,22 +126,6 @@
                 <button class="see-more">Voir plus</button>
             </div>
         </section>
-
-        <!-- Section Autres 2 -->
-        <section id="other-category-2">
-            <div class="container">
-                <h2>Autres 2</h2>
-                <label for="other-category-2-select">Choisissez une catégorie :</label>
-                <select id="other-category-2-select">
-                    <option value="all">Toutes les catégories</option>
-                    <!-- Les options seront ajoutées dynamiquement via l'API -->
-                </select>
-                <div class="movies-container">
-                    <!-- Les films seront ajoutés dynamiquement ici -->
-                </div>
-                <button class="see-more">Voir plus</button>
-            </div>        
-        </section>
     </main>
 
     <footer>
@@ -150,7 +134,55 @@
         </div>
     </footer>
 
-    <div class="modal"></div>
+    <div class="modal">
+        <div class="modal-content">
+
+            <div class="modal-movie-detail">
+                <div class="movie-detail-general">
+                    <div>
+                        <h2 class="movie-title">The Big Lebowski</h2>
+                        <div>
+                            <div>
+                                <span class="movie-year">1998</span> - <span class="movie-genre">Comedy, Crime, Sport</span>    
+                            </div>
+                            <div>
+                                <span class="movie-age">PG-13</span> - <span class="movie-duration">117 </span> minutes (<span class="movie-country">USA / UK</span>)
+                            </div>
+                            <div>
+                                IMDB score: <span class="movie-score">8.1</span> / 10
+                            </div>
+                            <div>
+                                Recettes au box-office: <span class="movie-gain"></span>
+                            </div>                        
+                        </div>
+                        <div class="movie-realisateur">
+                            <h3>Réalisé par:</h3>
+                            <p></p>
+                        </div>
+                    </div>
+                    
+                    <img class="movie-desktop-image" src="" alt="">
+                </div>
+                
+                <p class="movie-synopsis"></p>
+
+                <img class="movie-mobile-image" alt="" src="">
+
+                <div class="movie-casting">
+                    <h4>Avec: </h4>
+                    <p></p>
+                </div>
+
+        
+
+
+            </div>
+
+            <button class="btn-close-desktop">Fermer</button>
+            <button class="btn-close-mobile">X</button>
+        </div>
+        <div class="modal-bg"></div>
+    </div>
 
     <script src="assets/js/main.js" type="module"></script>
 </body>
