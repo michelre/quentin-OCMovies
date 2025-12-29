@@ -1,7 +1,9 @@
 class MovieCard {
-    constructor(title, image){
+    constructor(id, title, image, onClick){
+        this.id = id
         this.title = title
         this.image = image
+        this.onClick = onClick
     }
 
     render(){
@@ -29,6 +31,10 @@ class MovieCard {
         
         movieCard.appendChild(movieCardImage)
         movieCard.appendChild(movieCardDetails)
+
+        movieCardButton.addEventListener('click', () => {
+            this.onClick(this.id)
+        })
 
         return movieCard
     }

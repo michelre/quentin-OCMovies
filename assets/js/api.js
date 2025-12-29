@@ -15,3 +15,8 @@ export const getGenres = async () => {
     const genres = await request.json()
     return genres.results
 }
+
+export const getMovieDetails = async (id) => {
+    const request = await fetch(`http://localhost:8000/api/v1/titles/${id}`)
+    return await request.json()
+}
