@@ -1,5 +1,6 @@
 import MovieCard from './MovieCard.js'
-import { getBestMovies, getGenres, getMoviesByGenre, getMovieDetails } from './api.js'
+import { getBestMovies, getGenres, getMoviesByGenre, getMovieDetails, getBestMovie } from './api.js'
+import { showImage } from './utils.js'
 
 const displayMovieDetail = async (id) => {
     const modal = document.querySelector('.modal')
@@ -39,14 +40,30 @@ const displayMovieDetail = async (id) => {
     movieCasting.innerText = movieDetails.actors.join(', ')
 
     const movieDesktopImage = document.querySelector('.movie-desktop-image')
-    movieDesktopImage.src = movieDetails.image_url
-    movieDesktopImage.alt = movieDetails.title
+    showImage(movieDesktopImage, movieDetails.image_url, movieDetails.title)
 
     const movieMobileImage = document.querySelector('.movie-mobile-image')
     movieMobileImage.src = movieDetails.image_url
     movieMobileImage.alt = movieDetails.title
 
     modal.classList.toggle('show')
+}
+
+const displayBestMovie = (movie) => {
+    const movieContainer = document.querySelector('#best-movie .movie')
+    const img = movieContainer.querySelector('img')
+    const title = movieContainer.querySelector("#best-movie-title")
+    const description = movieContainer.querySelector('#best-movie-summary')
+    const button = movieContainer.querySelector('#best-movie-details')
+
+    title.innerText = movie.title
+    description.innerText = movie.description
+
+    showImage(img, movie.image_url, movie.title)
+
+    button.addEventListener('click', () => {
+        displayMovieDetail(movie.id)
+    })
 }
 
 const displayMovieCards = (movies, container) => {
@@ -89,12 +106,36 @@ const closeModal = () => {
     modal.classList.remove('show')
 }
 
+const seeMore = () => {
+    const buttons = document.querySelectorAll('.see-more')
+    buttons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+            const moviesContainer = btn.parentElement.querySelector('.movies-container')
+            moviesContainer.style.height = 'auto'
+            btn.style.display = 'none'
+        })
+    })
+}
+
 async function main(){
+    const bestMovie = await getBestMovie()    
+    displayBestMovie(await getMovieDetails(bestMovie.id))
+
+
     const movies = await getBestMovies()
     displayMovieCards(movies, document.querySelector('.movies-container'))
 
-    const moviesMystery = await getMoviesByGenre('Mystery')
-    displayMovieCards(moviesMystery, document.querySelector('#category-1 .movies-container'))
+    const genreCategory1 = 'Mystery'
+    const moviesCategory1 = await getMoviesByGenre(genreCategory1)
+    const sectionTitleCategory1 = document.querySelector('#category-1 h2')
+    sectionTitleCategory1.innerText = genreCategory1
+    displayMovieCards(moviesCategory1, document.querySelector('#category-1 .movies-container'))
+
+    const genreCategory2 = 'Drama'
+    const moviesCategory2 = await getMoviesByGenre(genreCategory2)
+    const sectionTitleCategory2 = document.querySelector('#category-2 h2')
+    sectionTitleCategory2.innerText = genreCategory2
+    displayMovieCards(moviesCategory2, document.querySelector('#category-2 .movies-container'))
 
     const genres = await displayGenres()
     displayMoviesByGenre(genres[0].name)
@@ -117,6 +158,8 @@ async function main(){
             closeModal()
         }
     })
+
+    seeMore()
 }
 
 main()
