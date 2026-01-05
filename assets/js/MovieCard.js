@@ -1,3 +1,5 @@
+import { showImage } from "./utils.js"
+
 class MovieCard {
     constructor(id, title, image, onClick){
         this.id = id
@@ -10,10 +12,11 @@ class MovieCard {
         const movieCard = document.createElement('div')
         movieCard.classList.add('movie-card')
 
+        
+
         const movieCardImage = document.createElement('img')
+        showImage(movieCardImage, this.image, `Affiche du film ${this.title}`)
         movieCardImage.id = 'movie1-image'
-        movieCardImage.src = this.image
-        movieCardImage.alt = `Affiche du film ${this.title}`
 
 
         const movieCardDetails = document.createElement('div')

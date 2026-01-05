@@ -121,6 +121,8 @@ header img {
     gap: 30px;
     justify-items: center;
     align-items: center;
+    overflow: hidden;
+    height: calc(320px * 2 + 30px);
 }
 
 .movies-container .movie-card {
@@ -227,6 +229,9 @@ header img {
         display: block;
     }
 
+.see-more {
+    display: block;
+}
 
 @media screen and (min-width: 768px) {
 
@@ -249,6 +254,7 @@ header img {
 
     .movies-container {
         grid-template-columns: repeat(2, 1fr);
+        height: calc(285px * 2 + 30px);
     }
 
     .movies-container .movie-card {
@@ -288,5 +294,9 @@ header img {
 
     .movies-container .movie-card {
         height: 252px;
+    }
+
+    .see-more {
+        display: none;
     }
 }
