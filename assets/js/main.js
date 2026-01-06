@@ -125,7 +125,7 @@ async function main(){
     const movies = await getBestMovies()
     displayMovieCards(movies, document.querySelector('.movies-container'))
 
-    const genreCategory1 = 'Mystery'
+    const genreCategory1 = 'Sci-Fi'
     const moviesCategory1 = await getMoviesByGenre(genreCategory1)
     const sectionTitleCategory1 = document.querySelector('#category-1 h2')
     sectionTitleCategory1.innerText = genreCategory1
