@@ -1,4 +1,5 @@
 import MovieCard from './MovieCard.js'
+import Select from './Select.js'
 import { getBestMovies, getGenres, getMoviesByGenre, getMovieDetails, getBestMovie } from './api.js'
 import { showImage } from './utils.js'
 
@@ -46,6 +47,7 @@ const displayMovieDetail = async (id) => {
     showImage(movieMobileImage, movieDetails.image_url, movieDetails.title)
 
     modal.classList.toggle('show')
+    document.querySelector('body').style.overflow = 'hidden'
 }
 
 const displayBestMovie = (movie) => {
@@ -79,30 +81,10 @@ const displayMoviesByGenre = async (genre) => {
     displayMovieCards(moviesByGenre, movieContainer)
 }
 
-const displayGenres = async () => {
-    const genres = await getGenres()
-    const select = document.querySelector('#other-category-select')
-    genres.forEach((genre, idx) => {
-        const option = document.createElement('option')
-        option.value = genre.name
-        option.innerText = genre.name
-        select.appendChild(option)
-        if(idx === 0){
-            option.selected = true
-        }
-        
-    })
-
-    select.addEventListener('change', async (e) => {                
-        displayMoviesByGenre(e.target.value)
-    })
-
-    return genres
-}
-
 const closeModal = () => {
     const modal = document.querySelector('.modal')
     modal.classList.remove('show')
+    document.querySelector('body').style.overflow = 'auto'
 }
 
 const seeMore = () => {
@@ -136,8 +118,11 @@ async function main(){
     sectionTitleCategory2.innerText = genreCategory2
     displayMovieCards(moviesCategory2, document.querySelector('#category-2 .movies-container'))
 
-    const genres = await displayGenres()
-    displayMoviesByGenre(genres[0].name)
+    const genres = await getGenres()
+    /*new Select(genres, (genreName) => {
+        displayMoviesByGenre(genreName)
+    });*/
+    new Select(genres, displayMoviesByGenre)
 
     const modalButtons = document.querySelectorAll('.modal button')
     const modalBg = document.querySelector('.modal-bg')
@@ -159,6 +144,8 @@ async function main(){
     })
 
     seeMore()
+
+
 }
 
 main()
