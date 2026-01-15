@@ -13,8 +13,8 @@ body {
 }
 
 section h2 {
-    font-size: 32px;
-    margin: 0 0 25px 0;
+    font-size: 36px;
+    margin: 0 0 0 0;
 }
 
 header.container div {
@@ -26,10 +26,8 @@ header.container div {
     padding: 10px 0;;
 }
 
-
 header h1 {
     font-weight: 300;
-    font-style: light;
     font-size: 40px;
     line-height: 100%;
     letter-spacing: 0;
@@ -48,6 +46,7 @@ header img {
 #best-movie .movie {    
     border-width: 6px;
     padding: 8px 8px;
+    margin-top: 20px;
     display: flex;
     flex-wrap: wrap;
     background: #FFFFFF;
@@ -130,6 +129,7 @@ header img {
 .movies-container {
     opacity: 1;
     display: grid;
+    margin-top: 30px;
     grid-template-columns: repeat(1, 1fr);
     grid-auto-rows: auto;
     gap: 30px;
@@ -206,6 +206,14 @@ header img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+#other-categories .container {
+    font-weight: 600;
+    line-height: 100%;
+    letter-spacing: 0;
+    vertical-align: middle;
+    color: #000000;
 }
 
 /* MODAL */
@@ -327,6 +335,15 @@ header img {
 .select-container {
     max-width: 404px;
     position: relative;
+    width: 100%;
+}
+
+.title-select-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
 }
 
 .select-container .selected {
@@ -423,6 +440,15 @@ header img {
     #best-movie .movie-info button {
         margin-bottom: 0px;
         margin-right: 0px;
+    }
+
+    .title-select-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    gap: 20px;
     }
 }
 
