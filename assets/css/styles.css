@@ -351,6 +351,19 @@ header img {
     padding: 18px;
     font-weight: 600;
     font-size: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.select-container .selected .arrow-down {
+    display: block;
+    width: 33px;
+    transition: transform .250s linear;
+}
+
+.select-container.open .selected .arrow-down {
+    transform: rotate(-180deg);
 }
 
 .select-container .options {
@@ -365,7 +378,7 @@ header img {
     transition: height .250s linear;
 }
 
-.select-container .options.open {
+.select-container.open .options {
     height: 450px;
 }
 

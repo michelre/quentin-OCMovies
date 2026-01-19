@@ -99,7 +99,8 @@ const seeMore = () => {
 }
 
 async function main(){
-    const bestMovie = await getBestMovie()    
+    
+    const bestMovie = await getBestMovie()  // Promise      
     displayBestMovie(await getMovieDetails(bestMovie.id))
 
 
@@ -122,7 +123,7 @@ async function main(){
     /*new Select(genres, (genreName) => {
         displayMoviesByGenre(genreName)
     });*/
-    new Select(genres, displayMoviesByGenre)
+    const select = new Select(genres, displayMoviesByGenre)
 
     const modalButtons = document.querySelectorAll('.modal button')
     const modalBg = document.querySelector('.modal-bg')
@@ -140,6 +141,7 @@ async function main(){
     document.addEventListener('keydown', (e) => {
         if(e.key === 'Escape'){
             closeModal()
+            select.closeSelect()
         }
     })
 
@@ -148,4 +150,6 @@ async function main(){
 
 }
 
-main()
+addEventListener("DOMContentLoaded", () => { 
+    main()
+})
